@@ -31,6 +31,10 @@
   align-items: center;
 }
 
+.logo {
+  display: none;
+}
+
 .logo a{
   font-weight: bold;
   font-size: 30px;
@@ -47,10 +51,26 @@
     font-weight: medium;
     color: #000;
     padding: 8px 14px;
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   a:hover {
-    transform: scale(1.03);
+    transform: scale(1.09);
+  }
+}
+
+
+@media (min-width: 640px) {
+  .logo {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

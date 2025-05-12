@@ -1,4 +1,6 @@
+import { Container } from "@/components/container";
 import { Hero } from "@/components/hero";
+import { Services } from "@/components/home/services";
 import { Submenu } from "@/components/home/submenu";
 import { getDataHome } from "@/utils/actions/get-data";
 import { HomeProps } from "@/utils/home.type";
@@ -18,6 +20,9 @@ export default async function Home() {
         bannerUrl={object.metadata.banner.url}
         icon={<Phone size={24} color="#fff" />}
       />
+      <Container>
+        <Services object={object} />
+      </Container>
     </main>
   );
 }

@@ -41,3 +41,28 @@
   height: 350px;
   border-radius: 8px;
 }
+
+@media (min-width: 640px) {
+  .containerAbout {
+    flex-direction: row;
+    gap: 34px;
+
+    .title {
+      align-self: flex-start;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .innerAbout {
+    p {
+      max-width: 90%;
+      align-self: flex-start;
+    }
+  }
+
+  .bannerAbout {
+    width: 700px;
+    height: 450px;
+  }
+}

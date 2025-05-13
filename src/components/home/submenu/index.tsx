@@ -4,13 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import { X, Menu } from "lucide-react";
+import { MenuProps } from "@/utils/menu.type";
 
-export function Submenu() {
+interface SubMenuProp {
+  menu: MenuProps;
+}
+
+export function Submenu({ menu }: SubMenuProp) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 767) {
+      if (window.innerWidth > 766) {
         setIsOpen(false);
       }
     };
@@ -36,15 +41,11 @@ export function Submenu() {
           </button>
         )}
 
-        <li>
-          <Link href={"#"}>Teste 1</Link>
-        </li>
-        <li>
-          <Link href={"#"}>Teste 2</Link>
-        </li>
-        <li>
-          <Link href={"#"}>Teste 3</Link>
-        </li>
+        {menu.objects.map((item) => (
+          <li key={item.slug}>
+            <Link href={`/post/${item.slug}`}>{item.title}</Link>
+          </li>
+        ))}
       </ul>
     </section>
   );

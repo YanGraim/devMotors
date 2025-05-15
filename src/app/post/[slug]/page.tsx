@@ -46,6 +46,8 @@ export default async function Page({
               alt={objects[0].title}
               fill={true}
               quality={100}
+              priority={true}
+              sizes="(max-width: 480px) 100vw, (max-width: 1024px) 75vw, 50vw"
               className={styles.imageAbout}
             />
           </div>

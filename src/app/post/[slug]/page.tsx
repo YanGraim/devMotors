@@ -1,6 +1,10 @@
 import { getItemBySlug } from "@/utils/actions/get-data";
 import styles from "./styles.module.scss";
 import { PostProps } from "@/utils/post.type";
+import { Hero } from "@/components/hero";
+import { Phone } from "lucide-react";
+import { Container } from "@/components/container";
+import Image from "next/image";
 
 export default async function Page({
   params: { slug },
@@ -10,8 +14,43 @@ export default async function Page({
   const { objects }: PostProps = await getItemBySlug(slug);
 
   return (
-    <div>
-      <h1>Pagina {slug}</h1>
-    </div>
+    <>
+      <Hero
+        heading={objects[0].title}
+        buttonTitle={objects[0].metadata.button.title}
+        buttonUrl={objects[0].metadata.button.url}
+        bannerUrl={objects[0].metadata.banner.url}
+        icon={<Phone size={24} color="#fff" />}
+      />
+      <Container>
+        <section className={styles.about}>
+          <article className={styles.innerAbout}>
+            <h1 className={styles.title}>
+              {objects[0].metadata.description.title}
+            </h1>
+            <p>{objects[0].metadata.description.text}</p>
+
+            {objects[0].metadata.description.button_active && (
+              <a
+                href={objects[0].metadata.description.button_url as string}
+                target="_blank"
+                className={styles.link}
+              >
+                {objects[0].metadata.description.button_title}
+              </a>
+            )}
+          </article>
+          <div className={styles.bannerAbout}>
+            <Image
+              src={objects[0].metadata.banner.url}
+              alt={objects[0].title}
+              fill={true}
+              quality={100}
+              className={styles.imageAbout}
+            />
+          </div>
+        </section>
+      </Container>
+    </>
   );
 }

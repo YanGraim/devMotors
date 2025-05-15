@@ -1,9 +1,14 @@
+import { getItemBySlug } from "@/utils/actions/get-data";
 import styles from "./styles.module.scss";
-export default function Page({
+import { PostProps } from "@/utils/post.type";
+
+export default async function Page({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
+  const { objects }: PostProps = await getItemBySlug(slug);
+
   return (
     <div>
       <h1>Pagina {slug}</h1>
